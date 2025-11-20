@@ -1,517 +1,274 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ai24q — сучасний AI-сайт та блог про автоматизацію бізнесу" />
+  <title>Ai24q — Штучний інтелект для вашого бізнесу</title>
 
-  <!-- Default (Ukrainian) SEO - will be updated on language switch -->
-  <title>Ai24q — розумні рішення на основі штучного інтелекту | ШІ-агенти, SaaS, автоматизація бізнесу</title>
-  <meta name="description" content="Ai24q — ваш партнер у впровадженні штучного інтелекту. Чат-боти, лендінги, автоматика й вірусні AI-демо для швидкого росту продукту." />
-  <meta name="keywords" content="штучний інтелект, AI-рішення, ШІ-агенти, лендінги, автоматизація бізнесу" />
-  <meta name="author" content="Ai24q" />
-
-  <!-- Open Graph (single image placeholder) -->
-  <meta property="og:title" content="Ai24q — розумні рішення на основі штучного інтелекту" />
-  <meta property="og:description" content="Чат-боти, лендінги і вірусні AI-демо для стартапів та продуктів. Від MVP до масштабування." />
-  <meta property="og:image" content="https://ai24q.com/og-image.jpg" />
-  <meta property="og:url" content="https://ai24q.com" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Ai24q" />
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Ai24q",
-    "url":"https://ai24q.com",
-    "logo":"https://ai24q.com/logo.png",
-    "description":"Ai24q — компанія що створює AI-чат-ботів, продуктні лендінги і вірусні AI-демо для швидкого росту стартапів."
-  }
-  </script>
-
-  <!-- Favicon (inline SVG) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>AI</text></svg>">
-
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#0f0f1a; --text:#e6eef8; --muted:#93a3bd; --accent:#00d4ff; --card:#12121a; --border:#253143;
-      --shadow:rgba(0,212,255,.14); --grad:linear-gradient(135deg,#00d4ff,#7c3aed);
-      --radius:12px;
+    :root {
+      --bg: #0f0f1a;
+      --text: #e2e8f0;
+      --accent: #00d4ff;
+      --accent2: #7c3aed;
+      --card: rgba(255, 255, 255, 0.05);
+      --card-hover: rgba(255, 255, 255, 0.1);
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; line-height:1.5; overflow-x:hidden}
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-
-    /* Progress bar */
-    #progress{position:fixed;top:0;left:0;height:4px;background:var(--accent);width:0;z-index:10000;transition:width .18s linear}
-
-    /* Header */
-    header{position:sticky;top:0;z-index:900;background:rgba(15,15,26,.6);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-    .brand{display:flex;gap:14px;align-items:center}
-    .logo{font-weight:800;font-size:1.5rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .tagline{color:var(--muted);font-size:.95rem}
-    .nav-right{display:flex;gap:12px;align-items:center}
-    .nav-links a{color:var(--text);text-decoration:none;font-weight:600;margin-right:18px;opacity:.95}
-    .lang-switch{display:flex;gap:8px}
-    .lang-btn{background:transparent;border:1px solid transparent;color:var(--text);padding:.35rem .65rem;border-radius:8px;cursor:pointer;font-weight:700}
-    .lang-btn.active{background:var(--accent);color:#001;box-shadow:0 8px 30px var(--shadow)}
-    .cta-small{background:var(--accent);color:#000;padding:.55rem .85rem;border-radius:10px;border:none;font-weight:700;cursor:pointer}
-
-    /* Hero */
-    .hero{padding:70px 0 40px;text-align:center}
-    .hero h1{font-size:2.6rem;line-height:1.02;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
-    .hero p{color:var(--muted);max-width:900px;margin:0 auto 22px;font-size:1.05rem}
-    .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-    .btn-primary{background:var(--accent);color:#001;border:none;padding:.95rem 1.6rem;border-radius:14px;font-weight:800;cursor:pointer;box-shadow:0 12px 30px var(--shadow)}
-    .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border);padding:.75rem 1.4rem;border-radius:12px;cursor:pointer}
-
-    /* Sections */
-    section{padding:48px 0}
-    h2{font-size:1.9rem;text-align:center;color:var(--accent);margin-bottom:18px;position:relative}
-    h2::after{content:'';position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);width:64px;height:3px;background:var(--accent);border-radius:3px}
-    .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .card{background:var(--card);padding:20px;border-radius:12px;border:1px solid var(--border);transition:transform .28s,box-shadow .28s}
-    .card:hover{transform:translateY(-10px);box-shadow:0 20px 50px var(--shadow);border-color:var(--accent)}
-    .card h3{color:var(--accent);margin-bottom:8px}
-    .muted{color:var(--muted);font-size:.98rem}
-
-    /* Chatbots block */
-    .chatbots .bot-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
-    .bot{padding:14px;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid var(--border)}
-    .bot small{display:block;color:var(--muted);margin-top:8px;font-size:.9rem}
-
-    /* Landing generator */
-    .landing-demo{display:flex;gap:18px;flex-wrap:wrap;align-items:stretch}
-    .land-preview{flex:1;min-width:260px;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:linear-gradient(180deg,#0b0e16,#0f0f1a);padding:14px}
-    .land-preview h4{margin-bottom:8px;color:var(--accent)}
-    .land-actions{display:flex;gap:10px;margin-top:12px}
-
-    /* Viral / Trending */
-    .viral-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:16px}
-    .viral-card{border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#0b0f1a,#0f0f1a);border:1px solid var(--border);position:relative}
-    .viral-thumb{height:160px;background:linear-gradient(90deg,#091127,#07121a);display:flex;align-items:center;justify-content:center;font-weight:700;color:rgba(255,255,255,.08);font-size:2.4rem}
-    .viral-body{padding:12px}
-    .viral-meta{display:flex;gap:8px;align-items:center;font-size:.9rem;color:var(--muted);margin-top:8px}
-    .share-row{display:flex;gap:8px;margin-top:12px}
-
-    /* Footer */
-    footer{padding:26px 0;text-align:center;color:var(--muted);border-top:1px solid var(--border);margin-top:30px}
-
-    @media(max-width:800px){
-      .hero h1{font-size:1.9rem}
-      .nav-links{display:none}
-      .lang-switch{gap:6px}
+    body.light {
+      --bg: #f8fafc;
+      --text: #0f0f1a;
+      --card: rgba(0, 0, 0, 0.05);
+      --card-hover: rgba(0, 0, 0, 0.1);
     }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Живий градієнтний фон */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(45deg, #0f0f1a, #1a1a2e, #16213e, #0f0f1a);
+      background-size: 400% 400%;
+      animation: gradientShift 20s ease infinite;
+      opacity: 0.4;
+      z-index: -2;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Частинки-нейрони */
+    canvas#particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      opacity: 0.15;
+    }
+
+    header {
+      padding: 2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+    logo { font-size: 1.8rem; font-weight: 700; }
+    nav a {
+      color: var(--text);
+      margin-left: 2rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    nav a:hover { color: var(--accent); }
+
+    #theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 5%;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 4.5rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.4rem;
+      max-width: 800px;
+      margin-bottom: 3rem;
+      opacity: 0.9;
+    }
+    .btn {
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover {
+      transform: scale(1.08) translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.4);
+    }
+
+    section {
+      padding: 8rem 5%;
+      text-align: center;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.4s ease;
+    }
+    .card:hover {
+      transform: translateY(-15px) scale(1.03);
+      background: var(--card-hover);
+      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+      border-color: var(--accent);
+    }
+    .card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    footer {
+      padding: 3rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 5rem;
+    }
+
+    /* Плавний скрол */
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body>
-  <div id="progress"></div>
+
+  <canvas id="particles"></canvas>
 
   <header>
-    <div class="container nav">
-      <div class="brand">
-        <div class="logo">Ai24q</div>
-        <div class="tagline" id="tagline">Розумні рішення на основі ШІ</div>
-      </div>
-
-      <div class="nav-right">
-        <nav class="nav-links" aria-label="Primary">
-          <a href="#services" id="nav-services">Послуги</a>
-          <a href="#products" id="nav-products">Продукти</a>
-          <a href="#viral" id="nav-viral">Viral</a>
-        </nav>
-
-        <div class="lang-switch" role="tablist" aria-label="Language switch">
-          <button class="lang-btn active" id="btn-uk" data-lang="uk">УКР</button>
-          <button class="lang-btn" id="btn-en" data-lang="en">EN</button>
-        </div>
-
-        <button class="cta-small" id="header-cta" onclick="openContact()">Безкоштовний аудит</button>
-      </div>
-    </div>
+    <div class="logo">🤖 Ai24q</div>
+    <nav>
+      <a href="#features">Можливості</a>
+      <a href="/blog">Блог</a>
+      <a href="#contact">Контакти</a>
+      <button id="theme-toggle">Moon</button>
+    </nav>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <h1 id="hero-title">Розумні рішення на основі штучного інтелекту</h1>
-        <p id="hero-sub">Ai24q створює AI-чат-ботів, продуктні лендінги та вірусні AI-демо для швидкого зростання стартапів і продуктів.</p>
-        <div class="hero-actions">
-          <button class="btn-primary" id="cta-primary" onclick="openContact()">Отримати аудит</button>
-          <button class="btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Детальніше</button>
-        </div>
+  <section class="hero">
+    <h1>Штучний інтелект, який заробляє для вас</h1>
+    <p>Автоматизація заявок, чат-боти, генерація лідів 24/7 — без кодингу та дорогих розробників</p>
+    <a href="#contact" class="btn">Запустити AI прямо зараз</a>
+  </section>
+
+  <section id="features">
+    <h2>Що ми вміємо</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>500+ лідів на день</h3>
+        <p>Автоматизовані воронки в Telegram, Instagram, сайтах</p>
       </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services">
-      <div class="container">
-        <h2 id="services-title">Що ми робимо</h2>
-
-        <!-- Chatbots & Funnels -->
-        <div class="card chatbots">
-          <h3 id="chatbots-h">AI-чат-боти та автоворонки</h3>
-          <p class="muted" id="chatbots-desc">Конверсійні чат-боти для лідів, автоматична кваліфікація, сценарії продажів і інтеграція з CRM.</p>
-
-          <div class="bot-list" aria-hidden="false">
-            <div class="bot">
-              <strong>LeadBot — Кваліфікація лідів</strong>
-              <small>Автоматичне опитування, сегментація, передачa в CRM (Telegram, WhatsApp, Web).</small>
-            </div>
-            <div class="bot">
-              <strong>SupportAgent — 24/7 підтримка</strong>
-              <small>Автоматичні відповіді, інтенти, escalation до оператора.</small>
-            </div>
-            <div class="bot">
-              <strong>SalesFlow — автоворонка</strong>
-              <small>Мультиканальний funnel: чат → email → дзвінок → оплата.</small>
-            </div>
-          </div>
-        </div>
-
-        <!-- Landing generator -->
-        <div style="height:18px"></div>
-        <div class="card landing-demo">
-          <div class="land-preview">
-            <h4 id="landing-h">AI-лендінги та генерація контенту</h4>
-            <p class="muted" id="landing-desc">Генеруємо висококонверсійні лендінги, тексти, заголовки і мультимедіа за кілька хвилин. Швидкий MVP для перевірки гіпотез.</p>
-
-            <div class="land-actions">
-              <button class="btn-primary" onclick="openContact()">Згенеруйте лендінг</button>
-              <button class="btn-ghost" onclick="previewLandingDemo()">Переглянути демо</button>
-            </div>
-          </div>
-
-          <div class="land-preview" style="max-width:420px">
-            <h4>Preview</h4>
-            <div style="background:linear-gradient(180deg,#081226,#0f0f1a);border-radius:8px;padding:12px;margin-top:10px;border:1px solid var(--border)">
-              <strong id="preview-title">AI-powered Landing</strong>
-              <p class="muted" id="preview-desc">Короткий опис продукту, який привертає увагу користувача та веде до CTA.</p>
-              <div style="display:flex;gap:8px;margin-top:10px">
-                <button class="btn-primary" onclick="openContact()">Отримати демо</button>
-                <button class="btn-ghost" onclick="copyPreview()">Копіювати копірайт</button>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="card">
+        <h3>Чат-боти з GPT-4</h3>
+        <p>Відповідають миттєво, кваліфікують і закривають на оплату</p>
       </div>
-    </section>
-
-    <!-- PRODUCTS / OUTCOMES -->
-    <section id="products" style="background:linear-gradient(180deg,#071022,#0f0f1a)">
-      <div class="container">
-        <h2 id="products-title">Продукти та результат</h2>
-        <div class="grid" style="text-align:center">
-          <div class="card"><h3 id="stat-1">50+</h3><p class="muted" id="stat-1-text">AI-реалізацій для продуктів</p></div>
-          <div class="card"><h3 id="stat-2">Weeks</h3><p class="muted" id="stat-2-text">від ідеї до MVP</p></div>
-          <div class="card"><h3 id="stat-3">30%</h3><p class="muted" id="stat-3-text">середнє збільшення конверсії</p></div>
-        </div>
+      <div class="card">
+        <h3>0 розробників</h3>
+        <p>Все налаштовується за 15 хвилин без коду</p>
       </div>
-    </section>
-
-    <!-- VIRAL / TRENDING -->
-    <section id="viral">
-      <div class="container">
-        <h2 id="viral-title">Viral AI demos — Trending now</h2>
-        <p class="muted" id="viral-sub">Готові ідеї та короткі демо для соцмереж (TikTok / Reels / Shorts) — контент, який легко стає вірусним.</p>
-
-        <div class="viral-grid">
-          <div class="viral-card">
-            <div class="viral-thumb">🎥</div>
-            <div class="viral-body">
-              <strong id="viral-1-title">AI Voiceover Viral</strong>
-              <p class="muted" id="viral-1-desc">Коротке відео з AI-озвученням та punchline — формат для Reels.</p>
-              <div class="viral-meta"><span>#ai #voiceover</span></div>
-              <div class="share-row">
-                <button class="btn-ghost" onclick="shareIdea('AI Voiceover Viral')">Share</button>
-                <button class="btn-primary" onclick="openContact()">Order</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="viral-card">
-            <div class="viral-thumb">✨</div>
-            <div class="viral-body">
-              <strong id="viral-2-title">Auto Product Reveal</strong>
-              <p class="muted" id="viral-2-desc">Миттєве створення короткого огляду продукту з AI-генерацією тексту та відео-кліпом.</p>
-              <div class="viral-meta"><span>#launch #ai</span></div>
-              <div class="share-row">
-                <button class="btn-ghost" onclick="shareIdea('Auto Product Reveal')">Share</button>
-                <button class="btn-primary" onclick="openContact()">Order</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="viral-card">
-            <div class="viral-thumb">🧠</div>
-            <div class="viral-body">
-              <strong id="viral-3-title">Deepfake-friendly Demo</strong>
-              <p class="muted" id="viral-3-desc">Етичні deepfake-демо для storytelling (з явною відміткою "demo").</p>
-              <div class="viral-meta"><span>#storytelling</span></div>
-              <div class="share-row">
-                <button class="btn-ghost" onclick="shareIdea('Deepfake-friendly Demo')">Share</button>
-                <button class="btn-primary" onclick="openContact()">Order</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Viral CTA -->
-        <div style="margin-top:18px;text-align:center">
-          <button class="btn-primary" onclick="openContact()">Замовити вірусну кампанію</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT / CTA -->
-    <section id="contact" style="padding-bottom:80px">
-      <div class="container">
-        <div class="card" style="display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap">
-          <div>
-            <h3 id="contact-h">Почніть трансформацію з Ai24q</h3>
-            <p class="muted" id="contact-p">Отримайте безкоштовний аудит: швидкий план MVP, ключові метрики та roadmap для масштабування.</p>
-          </div>
-          <div style="display:flex;gap:10px;align-items:center">
-            <button class="btn-primary" onclick="openContact()">Написати в Telegram</button>
-            <a class="btn-ghost" href="mailto:hello@ai24q.com">hello@ai24q.com</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <footer>
-    <div class="container">
-      <p>© <strong id="footer-brand">Ai24q</strong> 2025 — Розумні AI-рішення для стартапів і продуктів.</p>
-    </div>
+    © 2025 Ai24q — ШІ для бізнесу. Всі права захищені.
   </footer>
 
+  <!-- Частинки + перемикач теми -->
   <script>
-    /**********************
-     * Language dictionary
-     * keys used directly in DOM by id
-     **********************/
-    const i18n = {
-      uk: {
-        htmlLang: 'uk',
-        title: 'Ai24q — розумні рішення на основі штучного інтелекту | ШІ-агенти, SaaS, автоматизація бізнесу',
-        description: 'Ai24q — ваш партнер у впровадженні штучного інтелекту. Чат-боти, лендінги, автоматика й вірусні AI-демо для швидкого росту продукту.',
-        tagline: 'Розумні рішення на основі ШІ',
-        navServices: 'Послуги',
-        navProducts: 'Продукти',
-        navViral: 'Viral',
-        heroTitle: 'Розумні рішення на основі штучного інтелекту',
-        heroSub: 'Ai24q створює AI-чат-ботів, продуктні лендінги та вірусні AI-демо для швидкого зростання стартапів і продуктів.',
-        ctaPrimary: 'Отримати аудит',
-        servicesTitle: 'Що ми робимо',
-        chatbotsH: 'AI-чат-боти та автоворонки',
-        chatbotsDesc: 'Конверсійні чат-боти для лідів, автоматична кваліфікація, сценарії продажів і інтеграція з CRM.',
-        landingH: 'AI-лендінги та генерація контенту',
-        landingDesc: 'Генеруємо висококонверсійні лендінги, тексти, заголовки і мультимедіа за кілька хвилин.',
-        previewTitle: 'AI-powered Landing',
-        previewDesc: 'Короткий опис продукту, який привертає увагу користувача та веде до CTA.',
-        productsTitle: 'Продукти та результат',
-        stat1: '50+',
-        stat1Text: 'AI-реалізацій для продуктів',
-        stat2: 'Weeks',
-        stat2Text: 'від ідеї до MVP',
-        stat3: '30%',
-        stat3Text: 'середнє збільшення конверсії',
-        viralTitle: 'Viral AI demos — Trending now',
-        viralSub: 'Готові ідеї та короткі демо для соцмереж — контент, який легко стає вірусним.',
-        viral1Title: 'AI Voiceover Viral',
-        viral1Desc: 'Коротке відео з AI-озвученням та punchline — формат для Reels.',
-        viral2Title: 'Auto Product Reveal',
-        viral2Desc: 'Миттєве створення короткого огляду продукту з AI-генерацією тексту та відео-кліпом.',
-        viral3Title: 'Deepfake-friendly Demo',
-        viral3Desc: 'Етичні deepfake-демо для storytelling (з явною відміткою "demo").',
-        contactH: 'Почніть трансформацію з Ai24q',
-        contactP: 'Отримайте безкоштовний аудит: швидкий план MVP, ключові метрики та roadmap для масштабування.',
-        footer: '© Ai24q 2025 — Розумні AI-рішення для стартапів і продуктів.'
-      },
-      en: {
-        htmlLang: 'en',
-        title: 'Ai24q — Smart AI Solutions for Startups & Products | AI Agents, SaaS, Automation',
-        description: 'Ai24q builds growth-focused AI solutions for startups and product teams. Chatbots, landing generation, automation and viral AI demos to accelerate product growth.',
-        tagline: 'Smart AI solutions',
-        navServices: 'Services',
-        navProducts: 'Products',
-        navViral: 'Viral',
-        heroTitle: 'AI that accelerates product growth',
-        heroSub: 'Ai24q builds AI chatbots, product-ready landing pages and viral AI demos to help startups move faster and scale smarter.',
-        ctaPrimary: 'Get a free audit',
-        servicesTitle: 'What we build',
-        chatbotsH: 'AI Chatbots & Funnels',
-        chatbotsDesc: 'Conversion-first chatbots, auto lead qualification, sales scenarios and CRM integrations.',
-        landingH: 'AI Landing & Content Generation',
-        landingDesc: 'Generate high-converting landing pages, copy and multimedia in minutes — perfect for validating MVPs.',
-        previewTitle: 'AI-powered Landing',
-        previewDesc: 'Short product pitch that grabs attention and drives to CTA.',
-        productsTitle: 'Products & Outcomes',
-        stat1: '50+',
-        stat1Text: 'AI deployments for products',
-        stat2: 'Weeks',
-        stat2Text: 'from idea to MVP',
-        stat3: '30%',
-        stat3Text: 'avg conversion uplift',
-        viralTitle: 'Viral AI demos — Trending now',
-        viralSub: 'Ready-to-share short demos for social (TikTok / Reels) — content designed to go viral.',
-        viral1Title: 'AI Voiceover Viral',
-        viral1Desc: 'Short AI-voiced clip with a punchline — ideal for Reels and Shorts.',
-        viral2Title: 'Auto Product Reveal',
-        viral2Desc: 'Instant product reveal clip with AI-generated highlights and captions.',
-        viral3Title: 'Ethical Deepfake Demo',
-        viral3Desc: 'Ethical demo storytelling (clearly labelled as demo) for high-engagement content.',
-        contactH: 'Start transformation with Ai24q',
-        contactP: 'Get a free audit — we’ll map quick wins, an MVP plan and a scaling roadmap.',
-        footer: '© Ai24q 2025 — Smart AI solutions for startups & products.'
-      }
-    };
+    // Частинки
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    // Helper to update meta tags
-    function setMeta(name, content) {
-      let tag = document.querySelector('meta[name="'+name+'"]');
-      if (tag) {
-        tag.setAttribute('content', content);
-      } else {
-        tag = document.createElement('meta');
-        tag.setAttribute('name', name);
-        tag.setAttribute('content', content);
-        document.head.appendChild(tag);
-      }
-    }
-
-    // Apply language pack to page
-    function applyLanguage(lang) {
-      const pack = i18n[lang] || i18n.uk;
-      // update html lang
-      document.documentElement.lang = pack.htmlLang;
-
-      // update visible texts by id (only those present)
-      const map = {
-        'tagline': pack.tagline,
-        'nav-services': pack.navServices,
-        'nav-products': pack.navProducts,
-        'nav-viral': pack.navViral,
-        'hero-title': pack.heroTitle,
-        'hero-sub': pack.heroSub,
-        'cta-primary': pack.ctaPrimary,
-        'services-title': pack.servicesTitle,
-        'chatbots-h': pack.chatbotsH,
-        'chatbots-desc': pack.chatbotsDesc,
-        'landing-h': pack.landingH,
-        'landing-desc': pack.landingDesc,
-        'preview-title': pack.previewTitle,
-        'preview-desc': pack.previewDesc,
-        'products-title': pack.productsTitle,
-        'stat-1': pack.stat1,
-        'stat-1-text': pack.stat1Text,
-        'stat-2': pack.stat2,
-        'stat-2-text': pack.stat2Text,
-        'stat-3': pack.stat3,
-        'stat-3-text': pack.stat3Text,
-        'viral-title': pack.viralTitle,
-        'viral-sub': pack.viralSub,
-        'viral-1-title': pack.viral1Title,
-        'viral-1-desc': pack.viral1Desc,
-        'viral-2-title': pack.viral2Title,
-        'viral-2-desc': pack.viral2Desc,
-        'viral-3-title': pack.viral3Title,
-        'viral-3-desc': pack.viral3Desc,
-        'contact-h': pack.contactH,
-        'contact-p': pack.contactP,
-        'footer-brand': 'Ai24q'
-      };
-      Object.entries(map).forEach(([id, text])=>{
-        const el = document.getElementById(id);
-        if (el) el.textContent = text;
+    const particles = [];
+    for (let i = 0; i < 60; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: (Math.random() - 0.5) * 0.8,
+        r: Math.random() * 2 + 1
       });
-
-      // update header tagline specially
-      const tagline = document.getElementById('tagline');
-      if (tagline) tagline.textContent = pack.tagline;
-
-      // Update title and meta description/keywords
-      document.title = pack.title;
-      setMeta('description', pack.description);
-      setMeta('keywords', (pack.keywords || 'AI, SaaS, chatbots').toString());
-
-      // adjust active language button
-      document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-      document.getElementById('btn-'+(lang === 'uk' ? 'uk' : 'en')).classList.add('active');
-
-      // update OG (basic)
-      const ogTitle = document.querySelector('meta[property="og:title"]');
-      if (ogTitle) ogTitle.setAttribute('content', pack.title);
-      const ogDesc = document.querySelector('meta[property="og:description"]');
-      if (ogDesc) ogDesc.setAttribute('content', pack.description);
     }
 
-    // Attach event listeners for language buttons
-    document.getElementById('btn-uk').addEventListener('click', ()=>{ setLang('uk') });
-    document.getElementById('btn-en').addEventListener('click', ()=>{ setLang('en') });
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
-    // Persist language in localStorage
-    function setLang(lang) {
-      localStorage.setItem('siteLang', lang);
-      applyLanguage(lang);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = '#00d4ff';
+        ctx.fill();
+      });
+      requestAnimationFrame(animate);
     }
+    animate();
 
-    // On load: choose saved language or UA
-    (function(){
-      const saved = localStorage.getItem('siteLang') || 'uk';
-      applyLanguage(saved);
-    })();
-
-    // Small utilities
-    function openContact(){
-      // Open Telegram bot (Ai24qBot) in new tab
-      window.open('https://t.me/Ai24qBot', '_blank');
-    }
-    function previewLandingDemo(){
-      alert('Preview: згенеровано демо-лендінг (псевдо). Далі — інтеграція та експорт.');
-    }
-    function copyPreview(){
-      const txt = document.getElementById('preview-title').textContent + " — " + document.getElementById('preview-desc').textContent;
-      navigator.clipboard?.writeText(txt).then(()=> alert('Копія скопійована в буфер обміну'));
-    }
-    function shareIdea(name){
-      const url = encodeURIComponent(location.href);
-      const text = encodeURIComponent('Check this viral AI idea: ' + name + ' — from Ai24q');
-      const shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${text}`;
-      window.open(shareUrl,'_blank');
-    }
-
-    // Progress bar
-    window.addEventListener('scroll', ()=>{
-      const s = document.documentElement.scrollTop || document.body.scrollTop;
-      const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const pct = h > 0 ? Math.round((s/h)*100) : 0;
-      document.getElementById('progress').style.width = pct + '%';
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     });
 
-    // Smooth anchor scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        e.preventDefault();
-        const t = document.querySelector(a.getAttribute('href'));
-        if (t) t.scrollIntoView({behavior:'smooth'});
-      });
-    });
+    // Перемикач теми
+    const toggle = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light');
+      toggle.textContent = 'Sun';
+    }
 
-    // Accessibility: keyboard language switch (L key toggles)
-    document.addEventListener('keydown', (e)=>{
-      if (e.key.toLowerCase() === 'l') {
-        const cur = localStorage.getItem('siteLang') || 'uk';
-        setLang(cur === 'uk' ? 'en' : 'uk');
-      }
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      toggle.textContent = isLight ? 'Sun' : 'Moon';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
   </script>
 </body>
