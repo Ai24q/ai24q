@@ -1,275 +1,260 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Ai24q — сучасний AI-сайт та блог про автоматизацію бізнесу" />
-  <title>Ai24q — Штучний інтелект для вашого бізнесу</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Ai24q — розумні рішення на основі штучного інтелекту | ШІ-агенти, SaaS, автоматизація бізнесу</title>
+  <meta name="description" content="Ai24q — ваш партнер у впровадженні штучного інтелекту. Чат-боти, лендінги, автоматика й вірусні AI-демо для швидкого росту продукту." />
+  <meta name="keywords" content="штучний інтелект, AI-рішення, ШІ-агенти, лендінги, автоматизація бізнесу" />
+  <meta name="author" content="Ai24q" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ai24q — розумні рішення на основі штучного інтелекту" />
+  <meta property="og:description" content="Чат-боти, лендінги і вірусні AI-демо для стартапів та продуктів. Від MVP до масштабування." />
+  <meta property="og:image" content="https://ai24q.com/og-image.jpg" />
+  <meta property="og:url" content="https://ai24q.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"Ai24q","url":"https://ai24q.com","logo":"https://ai24q.com/logo.png","description":"Ai24q — компанія що створює AI-чат-ботів, продуктні лендінги і вірусні AI-демо для швидкого росту стартапів."}
+  </script>
+
+  <!-- Favicon + альтернативний для анімації -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>AI</text></svg>">
+  <link rel="alternate icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%2300d4ff'>AI</text></svg>" id="fav2">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg: #0f0f1a;
-      --text: #e2e8f0;
-      --accent: #00d4ff;
-      --accent2: #7c3aed;
-      --card: rgba(255, 255, 255, 0.05);
-      --card-hover: rgba(255, 255, 255, 0.1);
+    :root{
+      --bg:#0f0f1a; --text:#e6eef8; --muted:#93a3bd; --accent:#00d4ff; --card:#12121a; --border:#253143;
+      --shadow:rgba(0,212,255,.14); --grad:linear-gradient(135deg,#00d4ff,#7c3aed);
+      --radius:12px;
     }
-    body.light {
-      --bg: #f8fafc;
-      --text: #0f0f1a;
-      --card: rgba(0, 0, 0, 0.05);
-      --card-hover: rgba(0, 0, 0, 0.1);
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
 
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      position: relative;
-    }
+    #progress,#neural{position:fixed;top:0;left:0;width:100%;z-index:10000;pointer-events:none}
+    #progress{height:4px;background:var(--accent);width:0;transition:width .18s linear}
+    #neural{height:100%;opacity:0.07}
 
-    /* Живий градієнтний фон */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(45deg, #0f0f1a, #1a1a2e, #16213e, #0f0f1a);
-      background-size: 400% 400%;
-      animation: gradientShift 20s ease infinite;
-      opacity: 0.4;
-      z-index: -2;
-    }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+    header{position:sticky;top:0;z-index:900;background:rgba(15,15,26,.6);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{font-weight:800;font-size:1.5rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .tagline{color:var(--muted);font-size:.95rem}
+    .nav-right{display:flex;gap:12px;align-items:center}
+    .nav-links a{color:var(--text);text-decoration:none;font-weight:600;margin-right:18px;opacity:.95}
+    .lang-switch{display:flex;gap:8px}
+    .lang-btn{background:transparent;border:1px solid transparent;color:var(--text);padding:.35rem .65rem;border-radius:8px;cursor:pointer;font-weight:700}
+    .lang-btn.active{background:var(--accent);color:#001;box-shadow:0 8px 30px var(--shadow)}
+    .cta-small,.btn-primary{position:relative;overflow:hidden;background:var(--accent);color:#000;padding:.75rem 1.4rem;border-radius:14px;border:none;font-weight:800;cursor:pointer}
+    .cta-small::before,.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,#fff6,transparent);transform:translateX(-100%);transition:transform .6s}
+    .cta-small:hover::before,.btn-primary:hover::before{transform:translateX(100%)}
 
-    /* Частинки-нейрони */
-    canvas#particles {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -1;
-      opacity: 0.15;
-    }
+    .hero{padding:90px 0 60px;text-align:center}
+    .hero h1{font-size:2.8rem;line-height:1.05;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
+    .hero p{color:var(--muted);max-width:900px;margin:0 auto 28px;font-size:1.1rem}
+    .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+    .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border);padding:.85rem 1.6rem;border-radius:14px;cursor:pointer;transition:all .3s}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 
-    header {
-      padding: 2rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(10px);
-    }
-    logo { font-size: 1.8rem; font-weight: 700; }
-    nav a {
-      color: var(--text);
-      margin-left: 2rem;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-    nav a:hover { color: var(--accent); }
+    section{padding:80px 0}
+    h2{font-size:2rem;text-align:center;color:var(--accent);margin-bottom:24px;position:relative}
+    h2::after{content:'';position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);width:80px;height:4px;background:var(--accent);border-radius:3px}
+    .grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .card{background:var(--card);padding:28px;border-radius:16px;border:1px solid var(--border);transition:all .4s}
+    .card:hover{transform:translateY(-12px);box-shadow:0 24px 60px var(--shadow);border-color:var(--accent)}
 
-    #theme-toggle {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+    section > .container > *{opacity:0;transform:translateY(40px);transition:all .9s cubic-bezier(.2,.6,.3,1)}
+    section.scrolled > .container > *{opacity:1;transform:none}
 
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 5%;
-      position: relative;
-    }
-    .hero h1 {
-      font-size: 4.5rem;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero p {
-      font-size: 1.4rem;
-      max-width: 800px;
-      margin-bottom: 3rem;
-      opacity: 0.9;
-    }
-    .btn {
-      padding: 1rem 2.5rem;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: white;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      text-decoration: none;
-      display: inline-block;
-    }
-    .btn:hover {
-      transform: scale(1.08) translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.4);
-    }
+    .chatbots .bot-list,.viral-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:20px}
+    .bot,.viral-card{background:rgba(255,255,255,.02);padding:18px;border-radius:12px;border:1px solid var(--border);transition:all .3s}
+    .viral-thumb{height:180px;background:linear-gradient(90deg,#091127,#07121a);display:flex;align-items:center;justify-content:center;font-size:3rem;color:rgba(255,255,255,.08)}
 
-    section {
-      padding: 8rem 5%;
-      text-align: center;
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 4rem;
-    }
-    .card {
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 2.5rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: all 0.4s ease;
-    }
-    .card:hover {
-      transform: translateY(-15px) scale(1.03);
-      background: var(--card-hover);
-      box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
-      border-color: var(--accent);
-    }
-    .card h3 {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    #toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:#00d4ff;color:#000;padding:14px 32px;border-radius:50px;z-index:9999;opacity:0;transition:all .4s;font-weight:600}
 
-    footer {
-      padding: 3rem;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 5rem;
+    @media(max-width:800px){
+      .hero h1{font-size:2.2rem}
+      .nav-links{display:none}
+      .hero-actions{flex-direction:column;align-items:center}
     }
-
-    /* Плавний скрол */
-    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body>
-
-  <canvas id="particles"></canvas>
+  <div id="progress"></div>
+  <canvas id="neural"></canvas>
 
   <header>
-    <div class="logo">🤖 Ai24q</div>
-    <nav>
-      <a href="#features">Можливості</a>
-      <a href="/blog">Блог</a>
-      <a href="#contact">Контакти</a>
-      <button id="theme-toggle">Moon</button>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h1>Штучний інтелект, який заробляє для вас</h1>
-    <p>Автоматизація заявок, чат-боти, генерація лідів 24/7 — без кодингу та дорогих розробників</p>
-    <a href="#contact" class="btn">Запустити AI прямо зараз</a>
-  </section>
-
-  <section id="features">
-    <h2>Що ми вміємо</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>500+ лідів на день</h3>
-        <p>Автоматизовані воронки в Telegram, Instagram, сайтах</p>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">Ai24q</div>
+        <div class="tagline" id="tagline">Розумні рішення на основі ШІ</div>
       </div>
-      <div class="card">
-        <h3>Чат-боти з GPT-4</h3>
-        <p>Відповідають миттєво, кваліфікують і закривають на оплату</p>
-      </div>
-      <div class="card">
-        <h3>0 розробників</h3>
-        <p>Все налаштовується за 15 хвилин без коду</p>
+      <div class="nav-right">
+        <nav class="nav-links">
+          <a href="#services" id="nav-services">Послуги</a>
+          <a href="#products" id="nav-products">Продукти</a>
+          <a href="#viral" id="nav-viral">Viral</a>
+        </nav>
+        <div class="lang-switch">
+          <button class="lang-btn active" id="btn-uk">УКР</button>
+          <button class="lang-btn" id="btn-en">EN</button>
+        </div>
+        <button class="cta-small" onclick="openContact()">Безкоштовний аудит</button>
       </div>
     </div>
-  </section>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1 id="hero-title">Розумні рішення на основі штучного інтелекту</h1>
+        <p id="hero-sub">Ai24q створює AI-чат-ботів, продуктні лендінги та вірусні AI-демо для швидкого зростання стартапів і продуктів.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="openContact()">Отримати аудит</button>
+          <button class="btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Детальніше</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2 id="services-title">Що ми робимо</h2>
+
+        <div class="card chatbots">
+          <h3 id="chatbots-h">AI-чат-боти та автоворонки</h3>
+          <p class="muted" id="chatbots-desc">Конверсійні чат-боти для лідів, автоматична кваліфікація, сценарії продажів і інтеграція з CRM.</p>
+          <div class="bot-list">
+            <div class="bot"><strong>LeadBot — Кваліфікація лідів</strong><small>Telegram, WhatsApp, Web</small></div>
+            <div class="bot"><strong>SupportAgent — 24/7 підтримка</strong><small>Інтенти + escalation</small></div>
+            <div class="bot"><strong>SalesFlow — автоворонка</strong><small>Чат → email → дзвінок → оплата</small></div>
+          </div>
+        </div>
+
+        <div style="height:24px"></div>
+        <div class="card">
+          <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:stretch">
+            <div style="flex:1;min-width:300px">
+              <h3 id="landing-h">AI-лендінги та генерація контенту</h3>
+              <p class="muted" id="landing-desc">Генеруємо висококонверсійні лендінги, тексти, заголовки і мультимедіа за кілька хвилин.</p>
+              <div style="margin-top:20px;display:flex;gap:12px"><button class="btn-primary" onclick="openContact()">Згенерувати лендінг</button></div>
+            </div>
+            <div style="flex:1;min-width:300px;background:linear-gradient(180deg,#0b0e16,#0f0f1a);border-radius:12px;padding:20px;border:1px solid var(--border)">
+              <h4>Preview</h4>
+              <strong id="preview-title">AI-powered Landing</strong>
+              <p class="muted" id="preview-desc">Короткий опис продукту, який привертає увагу та веде до CTA.</p>
+              <div style="margin-top:12px;display:flex;gap:10px">
+                <button class="btn-primary" onclick="openContact()">Отримати</button>
+                <button class="btn-ghost" onclick="copyPreview()">Копіювати</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" style="background:linear-gradient(180deg,#071022,#0f0f1a)">
+      <div class="container">
+        <h2 id="products-title">Продукти та результат</h2>
+        <div class="grid" style="text-align:center">
+          <div class="card"><h3 id="stat-1">50+</h3><p class="muted" id="stat-1-text">AI-реалізацій для продуктів</p></div>
+          <div class="card"><h3 id="stat-2">Weeks</h3><p class="muted" id="stat-2-text">від ідеї до MVP</p></div>
+          <div class="card"><h3 id="stat-3">30%</h3><p class="muted" id="stat-3-text">середнє збільшення конверсії</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="viral">
+      <div class="container">
+        <h2 id="viral-title">Viral AI demos — Trending now</h2>
+        <p class="muted" id="viral-sub">Готові ідеї та короткі демо для соцмереж — контент, який легко стає вірусним.</p>
+        <div class="viral-grid">
+          <div class="viral-card"><div class="viral-thumb">Video</div><div class="viral-body"><strong id="viral-1-title">AI Voiceover Viral</strong><p class="muted" id="viral-1-desc">Коротке відео з AI-озвученням та punchline.</p><div style="margin-top:12px;display:flex;gap:8px"><button class="btn-ghost" onclick="shareIdea('AI Voiceover')">Share</button><button class="btn-primary" onclick="openContact()">Замовити</button></div></div></div>
+          <div class="viral-card"><div class="viral-thumb">Sparkles</div><div class="viral-body"><strong id="viral-2-title">Auto Product Reveal</strong><p class="muted" id="viral-2-desc">Миттєвий огляд продукту з AI-текстом.</p><div style="margin-top:12px;display:flex;gap:8px"><button class="btn-ghost" onclick="shareIdea('Auto Reveal')">Share</button><button class="btn-primary" onclick="openContact()">Замовити</button></div></div></div>
+          <div class="viral-card"><div class="viral-thumb">Brain</div><div class="viral-body"><strong id="viral-3-title">Deepfake-friendly Demo</strong><p class="muted" id="viral-3-desc">Етичні deepfake-демо (з міткою "demo").</p><div style="margin-top:12px;display:flex;gap:8px"><button class="btn-ghost" onclick="shareIdea('Deepfake Demo')">Share</button><button class="btn-primary" onclick="openContact()">Замовити</button></div></div></div>
+        </div>
+        <div style="text-align:center;margin-top:32px"><button class="btn-primary" onclick="openContact()">Замовити вірусну кампанію</button></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="card" style="display:flex;gap:32px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:40px">
+          <div><h3 id="contact-h">Почніть трансформацію з Ai24q</h3><p class="muted" id="contact-p">Отримайте безкоштовний аудит: план MVP, метрики та roadmap для масштабування.</p></div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap"><button class="btn-primary" onclick="openContact()">Написати в Telegram</button><a class="btn-ghost" href="mailto:hello@ai24q.com">hello@ai24q.com</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    © 2025 Ai24q — ШІ для бізнесу. Всі права захищені.
+    <div class="container">
+      <p>© <strong id="footer-brand">Ai24q</strong> 2025 — Розумні AI-рішення для стартапів і продуктів.</p>
+    </div>
   </footer>
 
-  <!-- Частинки + перемикач теми -->
+  <div id="toast"></div>
+
   <script>
-    // Частинки
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const i18n = {
+      uk: {htmlLang:'uk',title:'Ai24q — розумні рішення на основі штучного інтелекту | ШІ-агенти, SaaS, автоматизація бізнесу',description:'Ai24q — ваш партнер у впровадленні штучного інтелекту. Чат-боти, лендінги, автоматика й вірусні AI-демо для швидкого росту продукту.',tagline:'Розумні рішення на основі ШІ',navServices:'Послуги',navProducts:'Продукти',navViral:'Viral',heroTitle:'Розумні рішення на основі штучного інтелекту',heroSub:'Ai24q створює AI-чат-ботів, продуктні лендінги та вірусні AI-демо для швидкого зростання стартапів і продуктів.',servicesTitle:'Що ми робимо',chatbotsH:'AI-чат-боти та автоворонки',chatbotsDesc:'Конверсійні чат-боти для лідів, автоматична кваліфікація, сценарії продажів і інтеграція з CRM.',landingH:'AI-лендінги та генерація контенту',landingDesc:'Генеруємо висококонверсійні лендінги, тексти, заголовки і мультимедіа за кілька хвилин.',previewTitle:'AI-powered Landing',previewDesc:'Короткий опис продукту, який привертає увагу користувача та веде до CTA.',productsTitle:'Продукти та результат',stat1:'50+',stat1Text:'AI-реалізацій для продуктів',stat2:'Weeks',stat2Text:'від ідеї до MVP',stat3:'30%',stat3Text:'середнє збільшення конверсії',viralTitle:'Viral AI demos — Trending now',viralSub:'Готові ідеї та короткі демо для соцмереж — контент, який легко стає вірусним.',viral1Title:'AI Voiceover Viral',viral1Desc:'Коротке відео з AI-озвученням та punchline — формат для Reels.',viral2Title:'Auto Product Reveal',viral2Desc:'Миттєве створення короткого огляду продукту з AI-генерацією тексту та відео-кліпом.',viral3Title:'Deepfake-friendly Demo',viral3Desc:'Етичні deepfake-демо для storytelling (з явною відміткою "demo").',contactH:'Почніть трансформацію з Ai24q',contactP:'Отримайте безкоштовний аудит: швидкий план MVP, ключові метрики та roadmap для масштабування.'},
+      en: {htmlLang:'en',title:'Ai24q — Smart AI Solutions for Startups & Products',description:'Ai24q builds growth-focused AI solutions for startups and product teams. Chatbots, landing generation, automation and viral AI demos to accelerate product growth.',tagline:'Smart AI solutions',navServices:'Services',navProducts:'Products',navViral:'Viral',heroTitle:'AI that accelerates product growth',heroSub:'Ai24q builds AI chatbots, product-ready landing pages and viral AI demos to help startups move faster and scale smarter.',servicesTitle:'What we build',chatbotsH:'AI Chatbots & Funnels',chatbotsDesc:'Conversion-first chatbots, auto lead qualification, sales scenarios and CRM integrations.',landingH:'AI Landing & Content Generation',landingDesc:'Generate high-converting landing pages, copy and multimedia in minutes — perfect for validating MVPs.',previewTitle:'AI-powered Landing',previewDesc:'Short product pitch that grabs attention and drives to CTA.',productsTitle:'Products & Outcomes',stat1:'50+',stat1Text:'AI deployments for products',stat2:'Weeks',stat2Text:'from idea to MVP',stat3:'30%',stat3Text:'avg conversion uplift',viralTitle:'Viral AI demos — Trending now',viralSub:'Ready-to-share short demos for social (TikTok / Reels) — content designed to go viral.',viral1Title:'AI Voiceover Viral',viral1Desc:'Short AI-voiced clip with a punchline — ideal for Reels and Shorts.',viral2Title:'Auto Product Reveal',viral2Desc:'Instant product reveal clip with AI-generated highlights and captions.',viral3Title:'Ethical Deepfake Demo',viral3Desc:'Ethical demo storytelling (clearly labelled as demo) for high-engagement content.',contactH:'Start transformation with Ai24q',contactP:'Get a free audit — we’ll map quick wins, an MVP plan and a scaling roadmap.'}
+    };
 
-    const particles = [];
-    for (let i = 0; i < 60; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.8,
-        vy: (Math.random() - 0.5) * 0.8,
-        r: Math.random() * 2 + 1
-      });
+    function setMeta(n,c){let t=document.querySelector(`meta[name="${n}"]`);if(t)t.content=c;else{(t=document.createElement('meta')).name=n;t.content=c;document.head.appendChild(t)}}
+    function applyLanguage(l){
+      const p=i18n[l]||i18n.uk;
+      document.documentElement.lang=p.htmlLang;document.title=p.title;setMeta('description',p.description);
+      const m={tagline:p.tagline,'nav-services':p.navServices,'nav-products':p.navProducts,'nav-viral':p.navViral,'hero-title':p.heroTitle,'hero-sub':p.heroSub,servicesTitle:p.servicesTitle,'chatbots-h':p.chatbotsH,'chatbots-desc':p.chatbotsDesc,'landing-h':p.landingH,'landing-desc':p.landingDesc,'preview-title':p.previewTitle,'preview-desc':p.previewDesc,'products-title':p.productsTitle,'stat-1':p.stat1,'stat-1-text':p.stat1Text,'stat-2':p.stat2,'stat-2-text':p.stat2Text,'stat-3':p.stat3,'stat-3-text':p.stat3Text,'viral-title':p.viralTitle,'viral-sub':p.viralSub,'viral-1-title':p.viral1Title,'viral-1-desc':p.viral1Desc,'viral-2-title':p.viral2Title,'viral-2-desc':p.viral2Desc,'viral-3-title':p.viral3Title,'viral-3-desc':p.viral3Desc,'contact-h':p.contactH,'contact-p':p.contactP};
+      Object.entries(m).forEach(([i,t])=>{const e=document.getElementById(i);if(e)e.textContent=t});
+      document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+      document.getElementById('btn-'+l).classList.add('active');
     }
+    document.getElementById('btn-uk').onclick=()=>setLang('uk');
+    document.getElementById('btn-en').onclick=()=>setLang('en');
+    function setLang(l){localStorage.setItem('siteLang',l);applyLanguage(l)}
+    (function(){applyLanguage(localStorage.getItem('siteLang')||'uk')})();
 
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = '#00d4ff';
-        ctx.fill();
+    // Neural particles
+    const neural=document.getElementById('neural'),ctx2=neural.getContext('2d');
+    neural.width=innerWidth;neural.height=innerHeight;
+    let particles=Array(40).fill().map(()=>({x:Math.random()*neural.width,y:Math.random()*neural.height,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5}));
+    function drawNeural(){
+      ctx2.clearRect(0,0,neural.width,neural.height);
+      particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>neural.width)p.vx*=-1;if(p.y<0||p.y>neural.height)p.vy*=-1;
+        ctx2.fillStyle='#00d4ff';ctx2.fillRect(p.x,p.y,2,2);
+        particles.forEach(q=>{const d=Math.hypot(p.x-q.x,p.y-q.y);if(d<120){ctx2.beginPath();ctx2.moveTo(p.x,p.y);ctx2.lineTo(q.x,q.y);ctx2.strokeStyle=`rgba(0,212,255,${1-d/120})`;ctx2.stroke()}});
       });
-      requestAnimationFrame(animate);
+      requestAnimationFrame(drawNeural);
     }
-    animate();
+    drawNeural();
+    window.addEventListener('resize',()=>{neural.width=innerWidth;neural.height=innerHeight});
 
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    // Scroll animations + progress + favicon
+    const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('scrolled')}));
+    document.querySelectorAll('section').forEach(s=>observer.observe(s));
+    window.addEventListener('scroll',()=>{
+      const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+      const pct=h>0?Math.round((scrollY/h)*100):0;
+      document.getElementById('progress').style.width=pct+'%';
+      if(scrollY>300) document.querySelector('link[rel="icon"]').href=document.getElementById('fav2').href;
     });
 
-    // Перемикач теми
-    const toggle = document.getElementById('theme-toggle');
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      document.body.classList.add('light');
-      toggle.textContent = 'Sun';
-    }
+    // Toast
+    function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.opacity=1;t.style.transform='translateX(-50%) translateY(0)';setTimeout(()=>{t.style.opacity=0;t.style.transform='translateX(-50%) translateY(20px)'},3000)}
 
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      const isLight = document.body.classList.contains('light');
-      toggle.textContent = isLight ? 'Sun' : 'Moon';
-      localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    });
+    function openContact(){window.open('https://t.me/Ai24qBot','_blank')}
+    function copyPreview(){navigator.clipboard?.writeText(document.getElementById('preview-title').textContent+' — '+document.getElementById('preview-desc').textContent).then(()=>toast('Скопійовано!'))}
+    function shareIdea(n){const u=encodeURIComponent(location.href),t=encodeURIComponent('Переглянь вірусну AI-ідею: '+n+' від Ai24q');window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${u}&title=${t}`,'_blank')}
+
+    // Клавіша L — перемикання мови
+    document.addEventListener('keydown',e=>{if(e.key.toLowerCase()==='l'){setLang(localStorage.getItem('siteLang')==='uk'?'en':'uk')}});
   </script>
 </body>
 </html>
